@@ -6,6 +6,7 @@ module.exports = {
         primary: "#267972",
         secondary: "#F0C425",
         tertiary: "#E7A71C",
+        quaternary: "#135B73",
       },
       width: {
         95: "95%",
@@ -21,8 +22,6 @@ module.exports = {
         bannerGrid: "repeat(1 , 60% 1fr)",
       },
       backgroundImage: {
-        lineOne: "url('assets/images/firstLine.png')",
-        lineTwo: "url('assets/images/secondLine.png')",
         lines: "url('assets/images/lines.jpg')",
       },
     },

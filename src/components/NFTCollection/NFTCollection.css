@@ -1,0 +1,32 @@
+.sliderImg{
+    width : 300px;
+}
+
+.sliderTrack {
+    width: calc(300px * 16);
+    animation: srollAnimation 10s linear infinite;
+}
+
+.sliderTrack2 {
+    width: calc(300px * 16);
+    animation: srollAnimation2 10s linear infinite;
+}
+
+@keyframes srollAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-300px * 8));
+    }
+}
+
+@keyframes srollAnimation2 {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(300px * 8));
+    }
+}
+    
