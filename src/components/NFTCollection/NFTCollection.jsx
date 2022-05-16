@@ -34,7 +34,7 @@ const NFTCollection = () => {
                     x: inView ? 0 : -100,
                   }}
                   transition={{
-                    delay: index * 0.03,
+                    delay: index * 0.05,
                     // duration: 0.3,
                     type: "spring",
                   }}
