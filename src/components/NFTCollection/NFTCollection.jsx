@@ -18,7 +18,7 @@ const NFTCollection = () => {
   });
 
   return (
-    <section className="bg-quaternary h-full w-full mt-40" ref={ref}>
+    <section className="bg-quaternary h-full w-full mt-40" ref={ref} id="nft">
       <div className="customContainer">
         <div className="text-center pb-10 pt-28">
           <h2 className="text-4xl font-bold w-[90%] pb-8 text-white m-auto">

@@ -1,11 +1,11 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import locker from "../../assets/images/locker.png";
+import piggyBank from "../../assets/images/piggyBank2.png";
 
-const Locker = () => {
+const PiggyBank2 = () => {
   const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 1.2]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 1.4]);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -13,19 +13,8 @@ const Locker = () => {
 
   return (
     <>
-      <div className="overflow-hidden">
-        <motion.img
-          style={{
-            scale,
-          }}
-          src={locker}
-          alt=""
-          className="w-[100%] m-auto"
-        />
-      </div>
       <motion.div
         className="flex items-center"
-        ref={ref}
         initial={{
           opacity: 0,
           y: 500,
@@ -36,7 +25,7 @@ const Locker = () => {
         }}
         transition={{
           duration: 1,
-          delay: 0.3,
+          delay: 0.5,
           type: "spring",
         }}
       >
@@ -60,8 +49,18 @@ const Locker = () => {
           </p>
         </div>
       </motion.div>
+      <div className="overflow-hidden" ref={ref}>
+        <motion.img
+          src={piggyBank}
+          alt=""
+          style={{
+            scale,
+          }}
+          className="w-[80%] m-auto"
+        />
+      </div>
     </>
   );
 };
 
-export default Locker;
+export default PiggyBank2;

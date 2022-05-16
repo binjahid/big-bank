@@ -5,7 +5,7 @@ import bannerImg from "../../assets/images/logoAndBanner.png";
 
 const Banner = () => {
   return (
-    <div className="py-4 h-screen w-full bg-primary">
+    <div className="py-4 pb-28 h-full w-full bg-primary">
       <Header />
       <div className="grid grid-cols-bannerGrid customContainer pt-20">
         <div className="flex justify-center items-center">
@@ -77,7 +77,7 @@ const Banner = () => {
           }}
           className="flex justify-center"
         >
-          <img src={bannerImg} alt="banner" className="w-80 h-auto" />
+          <img src={bannerImg} alt="banner" className="w-full h-auto" />
         </motion.div>
       </div>
     </div>

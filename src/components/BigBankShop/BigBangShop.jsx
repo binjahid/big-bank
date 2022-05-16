@@ -10,7 +10,11 @@ const BigBangShop = () => {
   });
 
   return (
-    <section className="bg-customGray h-full w-full mt-40 pb-20" ref={ref}>
+    <section
+      className="bg-customGray h-full w-full mt-40 pb-20"
+      ref={ref}
+      id="marchandise"
+    >
       <div className="customContainer">
         <div className="text-center pb-10 pt-28">
           <h2 className="text-4xl font-bold pb-8 text-black">

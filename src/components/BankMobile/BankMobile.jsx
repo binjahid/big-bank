@@ -12,7 +12,7 @@ const BankMobile = () => {
   const titile = "BigBank Take Little Bank Mobile App".split("");
 
   return (
-    <section className="pt-60">
+    <section className="pt-60 overflow-hidden" id="app">
       <div className="text-center">
         <h2 ref={ref} className="text-5xl font-bold py-5">
           {titile.map((item, index) => {
@@ -66,19 +66,22 @@ const BankMobile = () => {
           initial={{
             scale: 0,
             opacity: 0,
+            rotate: -720,
           }}
           animate={{
             scale: inView ? 1 : 0,
             opacity: inView ? 1 : 0,
+            rotate: inView ? 0 : -720,
           }}
           transition={{
             delay: 1,
-            duration: 1,
-            type: "spring",
+            duration: 2,
+            type: "tween",
+            ease: "easeOut",
           }}
           src={appImg}
           alt=""
-          className="w-full shrink-0"
+          className="w-[97%] shrink-0"
         />
       </div>
       {/* <div className="flex w-[30%]">

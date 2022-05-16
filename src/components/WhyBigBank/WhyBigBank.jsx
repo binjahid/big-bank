@@ -1,6 +1,7 @@
 import Locker from "./Locker";
 import Money from "./Money";
 import PiggyBank from "./PiggyBank";
+import PiggyBank2 from "./PiggyBank2";
 import Treasury from "./Treasury";
 
 const WhyBigBank = () => {
@@ -15,6 +16,7 @@ const WhyBigBank = () => {
         <Money />
         <Treasury />
         <PiggyBank />
+        <PiggyBank2 />
         <Locker />
       </div>
     </section>
