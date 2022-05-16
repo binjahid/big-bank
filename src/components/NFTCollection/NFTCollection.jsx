@@ -12,7 +12,7 @@ const NFTCollection = () => {
     <section className="bg-quaternary h-full w-full mt-40">
       <div className="customContainer">
         <div className="text-center pb-10 pt-28">
-          <h2 className="text-4xl font-bold w-[90%] pb-8 text-white">
+          <h2 className="text-4xl font-bold w-[90%] pb-8 text-white m-auto">
             WILL YOU BE ACCEPTED AS THE BEST AMONG THE BEST?
           </h2>
           <div className="w-40 h-1 bg-primary m-auto"></div>

@@ -7,6 +7,7 @@ module.exports = {
         secondary: "#F0C425",
         tertiary: "#E7A71C",
         quaternary: "#135B73",
+        customGray: "#F8F8F8",
       },
       width: {
         95: "95%",
