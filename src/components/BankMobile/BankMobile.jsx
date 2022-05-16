@@ -1,5 +1,4 @@
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 import appImg from "../../assets/images/app.png";
@@ -7,10 +6,10 @@ import playStore from "../../assets/images/playStore.png";
 import appStore from "../../assets/images/appstore.svg_768x297.png";
 
 const BankMobile = () => {
-  const { ref, inView, entry } = useInView();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   const titile = "BigBank Take Little Bank Mobile App".split("");
-
-  useEffect(() => {}, [inView, entry]);
 
   return (
     <section className="pt-60">

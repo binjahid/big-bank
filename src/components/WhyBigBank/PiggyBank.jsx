@@ -1,12 +1,44 @@
+import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 import piggyBank from "../../assets/images/piggyBnak.png";
 
 const PiggyBank = () => {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 1.5]);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
   return (
     <>
-      <div>
-        <img src={piggyBank} alt="" className="w-[80%] m-auto" />
+      <div className="overflow-hidden" ref={ref}>
+        <motion.img
+          src={piggyBank}
+          alt=""
+          style={{
+            scale,
+          }}
+          className="w-[80%] m-auto"
+        />
       </div>
-      <div className="flex items-center">
+      <motion.div
+        className="flex items-center"
+        initial={{
+          opacity: 0,
+          y: 500,
+        }}
+        animate={{
+          opacity: inView ? 1 : 0,
+          y: inView ? 0 : 500,
+        }}
+        transition={{
+          duration: 1,
+          delay: 0.5,
+          type: "spring",
+        }}
+      >
         <div>
           <h2 className="text-4xl font-bold w-[90%] pb-8">
             WILL YOU BE ACCEPTED AS THE BEST AMONG THE BEST?
@@ -26,7 +58,7 @@ const PiggyBank = () => {
             tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
           </p>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

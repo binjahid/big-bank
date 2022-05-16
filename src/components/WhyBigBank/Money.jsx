@@ -1,13 +1,44 @@
+import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 import money from "../../assets/images/money.png";
 
 const Money = () => {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
   return (
     <>
-      <div>
-        <img src={money} alt="" className="w-[60%] m-auto" />
+      <div className="overflow-hidden" ref={ref}>
+        <motion.img
+          src={money}
+          alt=""
+          style={{
+            scale,
+          }}
+          className="w-[60%] m-auto"
+        />
       </div>
       <div className="flex items-center">
-        <div>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 500,
+          }}
+          animate={{
+            opacity: inView ? 1 : 0,
+            y: inView ? 0 : 500,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.5,
+            type: "spring",
+          }}
+        >
           <h2 className="text-4xl font-bold w-[90%] pb-8">
             WILL YOU BE ACCEPTED AS THE BEST AMONG THE BEST?
           </h2>
@@ -25,7 +56,7 @@ const Money = () => {
             dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
             tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
           </p>
-        </div>
+        </motion.div>
       </div>
     </>
   );

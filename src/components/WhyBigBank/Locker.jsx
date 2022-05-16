@@ -1,9 +1,35 @@
+import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 import locker from "../../assets/images/locker.png";
 
 const Locker = () => {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 1.2]);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
   return (
     <>
-      <div className="flex items-center">
+      <motion.div
+        className="flex items-center"
+        ref={ref}
+        initial={{
+          opacity: 0,
+          y: 500,
+        }}
+        animate={{
+          opacity: inView ? 1 : 0,
+          y: inView ? 0 : 500,
+        }}
+        transition={{
+          duration: 1,
+          delay: 0.3,
+          type: "spring",
+        }}
+      >
         <div>
           <h2 className="text-4xl font-bold w-[90%] pb-8">
             WILL YOU BE ACCEPTED AS THE BEST AMONG THE BEST?
@@ -23,9 +49,16 @@ const Locker = () => {
             tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
           </p>
         </div>
-      </div>
-      <div>
-        <img src={locker} alt="" className="w-[100%] m-auto" />
+      </motion.div>
+      <div className="overflow-hidden">
+        <motion.img
+          style={{
+            scale,
+          }}
+          src={locker}
+          alt=""
+          className="w-[100%] m-auto"
+        />
       </div>
     </>
   );

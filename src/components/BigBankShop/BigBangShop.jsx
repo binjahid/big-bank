@@ -1,73 +1,65 @@
-import imgOne from "../../assets/images/marchendiseOne.png";
-import imgTwo from "../../assets/images/marchendiseTwo.png";
-import imgThree from "../../assets/images/marchendiseThree.png";
-import imgFour from "../../assets/images/marchendiseFour.png";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import BigShopItems from "./BigShopItems";
 
 const BigBangShop = () => {
-  const marchendiseData = [
-    {
-      img: imgOne,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-    {
-      img: imgTwo,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-    {
-      img: imgThree,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-    {
-      img: imgFour,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-    {
-      img: imgOne,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-    {
-      img: imgTwo,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-    {
-      img: imgThree,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-    {
-      img: imgFour,
-      title: "Marchandise Name",
-      price: "$1,000.00",
-    },
-  ];
+  const title = "Big Bank Shop".split("");
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
 
   return (
-    <section className="bg-customGray h-full w-full mt-40 pb-20">
+    <section className="bg-customGray h-full w-full mt-40 pb-20" ref={ref}>
       <div className="customContainer">
         <div className="text-center pb-10 pt-28">
-          <h2 className="text-4xl font-bold pb-8 text-black">Big Bank Shop</h2>
+          <h2 className="text-4xl font-bold pb-8 text-black">
+            {title.map((item, index) => {
+              return (
+                <motion.span
+                  initial={{
+                    opacity: 0,
+                    x: -100,
+                  }}
+                  animate={{
+                    opacity: inView ? 1 : 0,
+                    x: inView ? 0 : -100,
+                  }}
+                  transition={{
+                    delay: index * 0.03,
+                    // duration: 0.3,
+                    type: "spring",
+                  }}
+                  key={index}
+                >
+                  {item}
+                </motion.span>
+              );
+            })}
+          </h2>
           <div className="w-40 h-1 bg-primary m-auto"></div>
-          <p className="text-gray-400 w-[60%] text-2xl py-4 m-auto">
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 300,
+            }}
+            animate={{
+              opacity: inView ? 1 : 0,
+              y: inView ? 0 : 300,
+            }}
+            transition={{
+              delay: 0.8,
+              duration: 1,
+              type: "spring",
+            }}
+            className="text-gray-400 w-[60%] text-2xl py-4 m-auto"
+          >
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-          </p>
+          </motion.p>
         </div>
-        <div className="grid grid-cols-4 gap-x-4 gap-y-20">
-          {marchendiseData.map((item, index) => (
-            <div key={index} className="rounded-2xl flex flex-col items-center">
-              <img src={item.img} alt="" className="w-full rounded-2xl" />
-              <h2 className="text-3xl font-bold py-6">{item.title}</h2>
-              <p className="text-primary text-2xl">{item.price}</p>
-            </div>
-          ))}
-        </div>
+        <BigShopItems />
       </div>
     </section>
   );
